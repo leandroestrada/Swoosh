@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--WelcomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Swoosh" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WelcomeVC" customModule="Swoosh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="132" y="137.18140929535232"/>
         </scene>
-        <!--View Controller-->
+        <!--LeagueVC-->
         <scene sceneID="etF-7X-OBI">
             <objects>
-                <viewController id="JIn-tp-tGC" sceneMemberID="viewController">
+                <viewController id="JIn-tp-tGC" customClass="LeagueVC" customModule="Swoosh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xqv-e6-Kcn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,6 +105,9 @@
                                 <state key="normal" title="&lt;">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="XSM-J5-IRR" kind="unwind" unwindAction="unwindFromSkillVCWithUnwindSegue:" id="yl3-ZV-F03"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="1zJ-7M-g4v">
                                 <rect key="frame" x="0.0" y="40" width="375" height="66"/>
@@ -137,6 +140,9 @@
                                         <state key="normal" title="Mens">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onMensTapped:" destination="JIn-tp-tGC" eventType="touchUpInside" id="H9B-Xf-pV3"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCS-Uc-B37" customClass="BorderButton" customModule="Swoosh" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="71" width="355" height="51"/>
@@ -148,6 +154,9 @@
                                         <state key="normal" title="Womens">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onWomensTapped:" destination="JIn-tp-tGC" eventType="touchUpInside" id="IXr-QA-pxH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ept-b5-qpm" customClass="BorderButton" customModule="Swoosh" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="142" width="355" height="51"/>
@@ -159,10 +168,13 @@
                                         <state key="normal" title="Co-ed">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onCoEdTapped:" destination="JIn-tp-tGC" eventType="touchUpInside" id="Iw0-h6-nVu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-eI-Flg" customClass="BorderButton" customModule="Swoosh" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-eI-Flg" customClass="BorderButton" customModule="Swoosh" customModuleProvider="target">
                                 <rect key="frame" x="10" y="576" width="355" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.4004976455" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -172,6 +184,9 @@
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="onNextTapped:" destination="JIn-tp-tGC" eventType="touchUpInside" id="aF6-b2-vSU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -195,17 +210,22 @@
                         <viewLayoutGuide key="safeArea" id="SnH-rI-uLz"/>
                     </view>
                     <navigationItem key="navigationItem" id="8rT-bW-rm2"/>
+                    <connections>
+                        <outlet property="nextBtn" destination="SVy-eI-Flg" id="xc0-Eg-k83"/>
+                        <segue destination="n1G-PV-VWG" kind="show" identifier="skillVCSegue" id="b06-dr-u4M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j9V-A3-vqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="XSM-J5-IRR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1001" y="136"/>
         </scene>
-        <!--View Controller-->
+        <!--SkillVC-->
         <scene sceneID="1VU-5u-JYp">
             <objects>
-                <viewController id="n1G-PV-VWG" sceneMemberID="viewController">
+                <viewController id="n1G-PV-VWG" customClass="SkillVC" customModule="Swoosh" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lfj-GT-jWp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beginnerBallerBG" translatesAutoresizingMaskIntoConstraints="NO" id="Wv4-zr-7tC">
@@ -258,7 +278,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiT-MO-WzW" customClass="BorderButton" customModule="Swoosh" customModuleProvider="target">
-                                <rect key="frame" x="10" y="596" width="355" height="51"/>
+                                <rect key="frame" x="10" y="576" width="355" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.4004976455" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="j6C-gf-eYY"/>
@@ -284,6 +304,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JPg-Ag-vHt"/>
                     </view>
+                    <navigationItem key="navigationItem" id="eZM-q1-5wB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eb6-RY-gZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
